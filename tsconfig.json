@@ -21,6 +21,9 @@
 			}
 		],
 		"paths": {
+			"@assets/*": ["./assets/*"],
+			"@constants/*": ["./src/constants/*"],
+			"@utils/*": ["./src/utils/*"],
 			"@components/*": ["./src/components/*"],
 			"@/*": ["./src/*"],
 			"~/*": ["./*"]

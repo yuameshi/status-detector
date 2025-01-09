@@ -5,15 +5,23 @@ import '@fontsource/roboto/700.css';
 import { CssBaseline } from '@mui/material';
 import { Metadata, Viewport } from 'next';
 
+import Favicon from '@assets/favicon.ico';
 import { EmotionCache } from '@components/utils/EmotionCache';
 import { ThemeContext } from '@components/utils/ThemeContext';
 import { ScrollBarCss } from '@components/utils/ScrollBarCss';
+import { Layout } from '@components/layout';
 
 export function generateMetadata(): Metadata {
 	return {
 		title: '服务可用性检测',
 		description: '查看有关服务的当前状态和过去一段时间的可用性',
 		authors: [{ name: 'yuameshi' }],
+		// icons: [
+		// 	{
+		// 		url: Favicon.src,
+		// 		sizes: `${Favicon.height}x${Favicon.width}`,
+		// 	},
+		// ],
 	};
 }
 
@@ -29,7 +37,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 				<EmotionCache>
 					<ScrollBarCss />
 					<CssBaseline />
-					<body>{children}</body>
+					<body>
+						<Layout>{children}</Layout>
+					</body>
 				</EmotionCache>
 			</ThemeContext>
 		</html>

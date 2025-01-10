@@ -1,1 +1,18 @@
-{}
+{
+	"status": {
+		"all operational": "所有系统运行正常",
+		"partial outage": "部分站点无法访问",
+		"major outage": "出现重大故障",
+		"unknown": "部分站点状态未知"
+	},
+	"monitor": {
+		"today": "今天",
+		"detail stat": "{ date } 可用率 { rate }%",
+		"stat": "最近{ days }天可用率{ rate }%",
+		"status": {
+			"operational": "正常",
+			"unknown": "未知",
+			"outage": "故障"
+		}
+	}
+}

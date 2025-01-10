@@ -1,1 +1,18 @@
-{}
+{
+	"status": {
+		"all operational": "All System(s) Operational",
+		"partial outage": "Partial Outage",
+		"major outage": "Major Outage Occurred",
+		"unknown": "Some Site(s) Status Unknown"
+	},
+	"monitor": {
+		"today": "Today",
+		"detail stat": "Availability for { date }: { rate }%",
+		"stat": "{ rate }% availability in the last { days } days.",
+		"status": {
+			"operational": "Operational",
+			"unknown": "Unknown",
+			"outage": "Outage"
+		}
+	}
+}

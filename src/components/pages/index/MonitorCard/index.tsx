@@ -5,6 +5,9 @@ import { DetailedStatusCell } from '@components/pages/index/MonitorCard/Detailed
 
 type MonitorCardProps = {
 	title: string;
+	status: 'operational' | 'failed' | 'unknown';
+	availability: number;
+	link: string;
 };
 
 export function MonitorCard() {
@@ -18,7 +21,7 @@ export function MonitorCard() {
 				my: 1.5,
 			}}
 		>
-			<CardContent>
+			<CardContent sx={{ mb: -1.5 }}>
 				<Box>
 					<Grid2
 						container
@@ -59,6 +62,16 @@ export function MonitorCard() {
 							</Grid2>
 						))}
 					</Grid2>
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							mt: 0.25,
+						}}
+					>
+						<Typography variant='body2'>{t('monitor.today')}</Typography>
+						<Typography variant='body2'>{'2022-01-01'}</Typography>
+					</Box>
 					<Box
 						sx={{
 							display: 'flex',

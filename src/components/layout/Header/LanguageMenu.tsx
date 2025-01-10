@@ -1,12 +1,31 @@
 'use client';
+
 import { IconButton, MenuItem, Menu } from '@mui/material';
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useTransition } from 'react';
+import { usePathname, useRouter } from '@/i18n/routing';
 import TranslateIcon from '@mui/icons-material/Translate';
+import { useParams } from 'next/navigation';
 
 export function LanguageMenu() {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
+
+	const router = useRouter();
+	const [_isPending, startTransition] = useTransition();
+	const pathname = usePathname();
+	const params = useParams();
+
+	function handleChangeLocale(nextLocale: string) {
+		startTransition(() => {
+			router.replace(
+				// @ts-expect-error -- TypeScript will validate that only known `params`
+				// are used in combination with a given `pathname`. Since the two will
+				// always match for the current route, we can skip runtime checks.
+				{ pathname, params },
+				{ locale: nextLocale },
+			);
+		});
+	}
 
 	return (
 		<>
@@ -47,34 +66,24 @@ export function LanguageMenu() {
 					setAnchorEl(null);
 				}}
 			>
-				<Link
-					locale='zh-CN'
-					passHref
-					href={''}
+				<MenuItem
+					onClick={() => {
+						setLocaleMenuOpen(false);
+						setAnchorEl(null);
+						handleChangeLocale('zh-CN');
+					}}
 				>
-					<MenuItem
-						onClick={() => {
-							setLocaleMenuOpen(false);
-							setAnchorEl(null);
-						}}
-					>
-						简体中文
-					</MenuItem>
-				</Link>
-				<Link
-					locale='en'
-					passHref
-					href={''}
+					简体中文
+				</MenuItem>
+				<MenuItem
+					onClick={() => {
+						setLocaleMenuOpen(false);
+						setAnchorEl(null);
+						handleChangeLocale('en');
+					}}
 				>
-					<MenuItem
-						onClick={() => {
-							setLocaleMenuOpen(false);
-							setAnchorEl(null);
-						}}
-					>
-						English
-					</MenuItem>
-				</Link>
+					English
+				</MenuItem>
 			</Menu>
 		</>
 	);

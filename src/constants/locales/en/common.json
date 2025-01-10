@@ -1,0 +1,10 @@
+{
+	"site name": "Status Detector",
+	"metadata": {
+		"title": "Service Availability Check",
+		"description": "View the current status of a service and its availability over a period of time"
+	},
+	"footer": {
+		"powered by": "Powered by"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"site name": "状态探针",
+	"metadata": {
+		"title": "服务可用性检测",
+		"description": "查看有关服务的当前状态和过去一段时间的可用性"
+	},
+	"footer": {
+		"powered by": "驱动自"
+	}
+}

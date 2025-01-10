@@ -4,6 +4,7 @@ import { DarkmodeToggle } from '@components/layout/Header/DarkmodeToggle';
 import { LanguageMenu } from '@components/layout/Header/LanguageMenu';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { externalLinks } from '@constants/config';
+import { Title } from '@components/layout/Header/Title';
 
 export const AppHeader = () => {
 	return (
@@ -25,13 +26,7 @@ export const AppHeader = () => {
 							lg: 'auto',
 						}}
 					>
-						<Typography
-							variant='h6'
-							component='div'
-							sx={{ flexGrow: 1, m: 2 }}
-						>
-							{'siteName'}
-						</Typography>
+						<Title />
 					</Grid2>
 					<Grid2>
 						<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

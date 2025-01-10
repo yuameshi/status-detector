@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import type { FC, PropsWithChildren } from 'react';
 import { AppHeader } from './Header';
-import { AppFooter } from './Footer';
+// import { AppFooter } from './Footer';
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => (
 	<Box
@@ -22,6 +22,6 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => (
 		>
 			{children}
 		</Box>
-		<AppFooter />
+		{/* <AppFooter /> */}
 	</Box>
 );

@@ -12,7 +12,7 @@
 		"status": {
 			"operational": "正常",
 			"unknown": "未知",
-			"outage": "故障"
+			"failed": "故障"
 		}
 	}
 }

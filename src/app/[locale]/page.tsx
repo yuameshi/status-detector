@@ -1,7 +1,7 @@
-import { MonitorCard } from '@components/pages/index/MonitorCard';
-import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Placeholder';
 import { Alert, Box } from '@mui/material';
 import { useTranslations } from 'next-intl';
+import { apiKeys } from '@constants/config';
+import { MonitorCard } from '@components/pages/index/MonitorCard';
 
 export default function Home() {
 	const t = useTranslations('index');
@@ -37,10 +37,12 @@ export default function Home() {
 				>
 					{t('status.all operational')}
 				</Alert>
-				<MonitorCard />
-				<MonitorCard />
-				<MonitorCard />
-				<MonitorCardPlaceholder />
+				{apiKeys.map((_, i) => (
+					<MonitorCard
+						key={i}
+						token={apiKeys[i]}
+					/>
+				))}
 			</Box>
 		</Box>
 	);

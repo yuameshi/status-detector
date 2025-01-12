@@ -1,96 +1,37 @@
-import { Box, Card, CardContent, Grid2, Paper, Tooltip, Typography } from '@mui/material';
-import { useTranslations } from 'next-intl';
-import CheckIcon from '@mui/icons-material/Check';
-import { DetailedStatusCell } from '@components/pages/index/MonitorCard/DetailedStatusCell';
+'use client';
 
-type MonitorCardProps = {
-	title: string;
-	status: 'operational' | 'failed' | 'unknown';
-	availability: number;
-	link: string;
-};
+import { MonitorCardWithDetail } from '@components/pages/index/MonitorCard/MonitorCardWithData';
+import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Placeholder';
+import { getData } from '@utils/getData';
+import { useEffect, useState, type FC } from 'react';
+import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 
-export function MonitorCard() {
-	const t = useTranslations('index');
+export const MonitorCard: FC<{
+	token: string;
+}> = ({ token }) => {
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState<IUptimeRobotApiReturn>();
 
-	return (
-		<Card
-			sx={{
-				width: '100%',
-				maxWidth: 1000,
-				my: 1.5,
-			}}
-		>
-			<CardContent sx={{ mb: -1.5 }}>
-				<Box>
-					<Grid2
-						container
-						sx={{
-							mb: 1,
-						}}
-					>
-						<Grid2>
-							<Typography variant='body1'>Lorem, ipsum.</Typography>
-						</Grid2>
-						<Grid2 size='grow' />
-						<Grid2
-							sx={{
-								display: 'inline-flex',
-								alignItems: 'center',
-								color: 'success.main',
-							}}
-						>
-							<CheckIcon sx={{ mx: 0.5 }} />
-							<Typography variant='body1'>{t('monitor.status.operational')}</Typography>
-						</Grid2>
-					</Grid2>
-					<Grid2
-						container
-						columns={60}
-						columnSpacing={0.4}
-						height={30}
-					>
-						{new Array(60).fill('').map((_, i) => (
-							<Grid2
-								key={i}
-								size='grow'
-								sx={{
-									height: '100%',
-								}}
-							>
-								<DetailedStatusCell availability={Math.random() * 100} />
-							</Grid2>
-						))}
-					</Grid2>
-					<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'space-between',
-							mt: 0.25,
-						}}
-					>
-						<Typography variant='body2'>{t('monitor.today')}</Typography>
-						<Typography variant='body2'>{'2022-01-01'}</Typography>
-					</Box>
-					<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							mt: 1,
-						}}
-					>
-						<Typography
-							variant='body2'
-							color='text.secondary'
-						>
-							{t('monitor.stat', {
-								days: 60,
-								rate: 100,
-							})}
-						</Typography>
-					</Box>
-				</Box>
-			</CardContent>
-		</Card>
+	useEffect(() => {
+		(async () => {
+			try {
+				const data = await getData(token);
+				if (data.stat === 'ok') {
+					setData(data);
+					setLoading(false);
+				}
+			} catch (error) {}
+		})();
+	}, [token]);
+
+	return loading || !data ? (
+		<MonitorCardPlaceholder />
+	) : (
+		<MonitorCardWithDetail
+			title={data.monitors[0].friendly_name}
+			status={data.monitors[0].status}
+			availability={data.monitors[0].custom_uptime_ranges}
+			link={data.monitors[0].url}
+		/>
 	);
-}
+};

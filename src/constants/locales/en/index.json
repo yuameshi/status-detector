@@ -12,7 +12,7 @@
 		"status": {
 			"operational": "Operational",
 			"unknown": "Unknown",
-			"outage": "Outage"
+			"failed": "Failed"
 		}
 	}
 }

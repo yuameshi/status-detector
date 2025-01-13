@@ -1,11 +1,12 @@
 import type { FC } from 'react';
-import { Box, Card, CardContent, Grid2, Typography } from '@mui/material';
+import { Box, Card, CardContent, Grid2, IconButton, Typography } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { DetailedStatusCell } from '@components/pages/index/MonitorCard/DetailedStatusCell';
-import { maxDays } from '@constants/config';
+import { maxDays, showLinks } from '@constants/config';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 enum Status {
 	Unknown,
@@ -57,8 +58,22 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 							mb: 1,
 						}}
 					>
-						<Grid2>
+						<Grid2
+							display='inline-flex'
+							alignItems='center'
+						>
 							<Typography variant='body1'>{title}</Typography>
+							{showLinks && (
+								<IconButton
+									href={link}
+									target='_blank'
+									size={'small'}
+									rel='noopener noreferrer'
+									sx={{ mx: 1 }}
+								>
+									<OpenInNewIcon fontSize='small' />
+								</IconButton>
+							)}
 						</Grid2>
 						<Grid2 size='grow' />
 						<Grid2

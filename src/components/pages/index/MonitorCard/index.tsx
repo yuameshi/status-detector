@@ -1,9 +1,10 @@
 'use client';
 
+import { CounterContext } from '@/contexts/counter';
 import { MonitorCardWithDetail } from '@components/pages/index/MonitorCard/MonitorCardWithData';
 import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Placeholder';
 import { getData } from '@utils/getData';
-import { useEffect, useState, type FC } from 'react';
+import { useContext, useEffect, useState, type FC } from 'react';
 import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 
 export const MonitorCard: FC<{
@@ -11,6 +12,7 @@ export const MonitorCard: FC<{
 }> = ({ token }) => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<IUptimeRobotApiReturn>();
+	const { setCounter } = useContext(CounterContext);
 
 	useEffect(() => {
 		(async () => {
@@ -19,6 +21,7 @@ export const MonitorCard: FC<{
 				if (data.stat === 'ok') {
 					setData(data);
 					setLoading(false);
+					if (data.monitors[0].status === 2) setCounter((prev: number) => prev + 1);
 				}
 			} catch (error) {}
 		})();

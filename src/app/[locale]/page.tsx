@@ -1,12 +1,11 @@
-import { Alert, Box } from '@mui/material';
-import { useTranslations } from 'next-intl';
+import { Box } from '@mui/material';
 import { apiKeys } from '@constants/config';
 import { MonitorCard } from '@components/pages/index/MonitorCard';
+import { CounterContextProvider } from '@components/pages/index/CounterContext';
+import { Alert } from '@components/pages/index/Alert';
 
-export default function Home() {
-	const t = useTranslations('index');
-
-	return (
+const Home = () => (
+	<CounterContextProvider>
 		<Box
 			sx={{
 				display: 'flex',
@@ -27,16 +26,7 @@ export default function Home() {
 					// height: '100vh',
 				}}
 			>
-				<Alert
-					variant='filled'
-					severity='success'
-					sx={{
-						width: '100%',
-						mb: 1.5,
-					}}
-				>
-					{t('status.all operational')}
-				</Alert>
+				<Alert />
 				{apiKeys.map((_, i) => (
 					<MonitorCard
 						key={i}
@@ -45,5 +35,7 @@ export default function Home() {
 				))}
 			</Box>
 		</Box>
-	);
-}
+	</CounterContextProvider>
+);
+
+export default Home;

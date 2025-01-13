@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { apiKeys } from '@constants/config';
 import { MonitorCard } from '@components/pages/index/MonitorCard';
 import { CounterContextProvider } from '@components/pages/index/CounterContext';
-import { Alert } from '@components/pages/index/Alert';
+import { Alert } from '@components/pages/index/Alert/index';
 
 const Home = () => (
 	<CounterContextProvider>

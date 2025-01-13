@@ -30,7 +30,7 @@ export const MonitorCard: FC<{
 	}, [token]);
 
 	return loading || !data ? (
-		<MonitorCardPlaceholder />
+		<MonitorCardPlaceholder maxDays={maxDays} />
 	) : (
 		<MonitorCardWithDetail
 			title={data.monitors[0].friendly_name}

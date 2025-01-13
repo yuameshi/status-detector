@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, Grid2, Skeleton } from '@mui/material';
 import type { FC } from 'react';
 
-export const MonitorCardPlaceholder: FC = () => (
+export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => (
 	<Card
 		sx={{
 			width: '100%',
@@ -48,7 +48,7 @@ export const MonitorCardPlaceholder: FC = () => (
 					columnSpacing={0.4}
 					height={30}
 				>
-					{new Array(60).fill('').map((_, i) => (
+					{new Array(maxDays).fill('').map((_, i) => (
 						<Grid2
 							key={i}
 							size='grow'

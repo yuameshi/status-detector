@@ -105,30 +105,33 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 							</Typography>
 						</Grid2>
 					</Grid2>
-					<Grid2
-						container
-						columns={60}
-						columnSpacing={0.4}
-						height={30}
-					>
-						{availability
-							.split('-')
-							.slice(0, -1)
-							.map((range, i) => (
-								<Grid2
-									key={i}
-									size='grow'
-									sx={{
-										height: '100%',
-									}}
-								>
-									<DetailedStatusCell
-										availability={Number(range)}
-										range={day[i]}
-									/>
-								</Grid2>
-							))}
-					</Grid2>
+					<Box sx={{ maxWidth: '100%', overflowX: 'auto' }}>
+						<Grid2
+							container
+							columns={60}
+							columnSpacing={0.4}
+							height={30}
+							minWidth={700}
+						>
+							{availability
+								.split('-')
+								.slice(0, -1)
+								.map((range, i) => (
+									<Grid2
+										key={i}
+										size='grow'
+										sx={{
+											height: '100%',
+										}}
+									>
+										<DetailedStatusCell
+											availability={Number(range)}
+											range={day[i]}
+										/>
+									</Grid2>
+								))}
+						</Grid2>
+					</Box>
 					<Box
 						sx={{
 							display: 'flex',

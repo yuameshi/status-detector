@@ -42,27 +42,30 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 						/>
 					</Grid2>
 				</Grid2>
-				<Grid2
-					container
-					columns={60}
-					columnSpacing={0.4}
-					height={30}
-				>
-					{new Array(maxDays).fill('').map((_, i) => (
-						<Grid2
-							key={i}
-							size='grow'
-							sx={{
-								height: '100%',
-							}}
-						>
-							<Skeleton
-								variant='rounded'
-								sx={{ height: '100%', width: '100%' }}
-							/>
-						</Grid2>
-					))}
-				</Grid2>
+				<Box sx={{ maxWidth: '100%', overflow: 'hidden' }}>
+					<Grid2
+						container
+						columns={60}
+						columnSpacing={0.4}
+						height={30}
+						minWidth={700}
+					>
+						{new Array(maxDays).fill('').map((_, i) => (
+							<Grid2
+								key={i}
+								size='grow'
+								sx={{
+									height: '100%',
+								}}
+							>
+								<Skeleton
+									variant='rounded'
+									sx={{ height: '100%', width: '100%' }}
+								/>
+							</Grid2>
+						))}
+					</Grid2>
+				</Box>
 				<Box
 					sx={{
 						display: 'flex',

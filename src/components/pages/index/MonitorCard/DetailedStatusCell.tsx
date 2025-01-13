@@ -6,16 +6,21 @@ import { type FC, useState } from 'react';
 
 type DetailedStatusCellProps = {
 	availability?: number;
+	range: string;
 };
 
-export const DetailedStatusCell: FC<DetailedStatusCellProps> = ({ availability }) => {
+export const DetailedStatusCell: FC<DetailedStatusCellProps> = ({ availability, range }) => {
 	const [isHovered, setIsHovered] = useState(false);
+	const statPeriod = range
+		.split('_')
+		.map(date => new Date(Number(date) * 1000).toLocaleDateString())
+		.join(' - ');
 	const t = useTranslations('index');
 
 	return (
 		<Tooltip
 			title={t('monitor.detail stat', {
-				date: '2024-01-10',
+				date: statPeriod,
 				rate: availability,
 			})}
 			placement='top'

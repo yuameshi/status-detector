@@ -37,7 +37,9 @@ function getDates() {
 
 export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, link, availability }) => {
 	const t = useTranslations('index');
-	const days = new Date(getDates().logs_start_date * 1000).toLocaleDateString();
+	const dates = getDates();
+	const day = dates.custom_uptime_ranges.split('-');
+	const startDate = new Date(dates.logs_start_date * 1000).toLocaleDateString();
 
 	return (
 		<Card
@@ -93,17 +95,23 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 						columnSpacing={0.4}
 						height={30}
 					>
-						{availability.split('-').map((range, i) => (
-							<Grid2
-								key={i}
-								size='grow'
-								sx={{
-									height: '100%',
-								}}
-							>
-								<DetailedStatusCell availability={Number(range)} />
-							</Grid2>
-						))}
+						{availability
+							.split('-')
+							.slice(0, -1)
+							.map((range, i) => (
+								<Grid2
+									key={i}
+									size='grow'
+									sx={{
+										height: '100%',
+									}}
+								>
+									<DetailedStatusCell
+										availability={Number(range)}
+										range={day[i]}
+									/>
+								</Grid2>
+							))}
 					</Grid2>
 					<Box
 						sx={{
@@ -113,7 +121,7 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 						}}
 					>
 						<Typography variant='body2'>{t('monitor.today')}</Typography>
-						<Typography variant='body2'>{days}</Typography>
+						<Typography variant='body2'>{startDate}</Typography>
 					</Box>
 					<Box
 						sx={{
@@ -127,8 +135,8 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 							color='text.secondary'
 						>
 							{t('monitor.stat', {
-								days: 60,
-								rate: 100,
+								days: maxDays,
+								rate: Number(availability.split('-').slice(-1)[0]).toFixed(2),
 							})}
 						</Typography>
 					</Box>

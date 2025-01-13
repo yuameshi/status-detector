@@ -11,18 +11,19 @@ type AlertProps = {
 
 export const Alert: FC<AlertProps> = ({ keysLength }) => {
 	const { counter } = useContext(CounterContext);
+	console.log('counter', counter);
 	const t = useTranslations('index');
 
 	return keysLength > 0 ? (
 		<AlertProto
 			variant='filled'
-			severity={keysLength >= counter ? 'success' : counter === 0 ? 'error' : 'warning'}
+			severity={counter >= keysLength ? 'success' : counter === 0 ? 'error' : 'warning'}
 			sx={{
 				width: '100%',
 				mb: 1.5,
 			}}
 		>
-			{keysLength >= counter ? t('status.all operational') : counter === 0 ? t('status.major outage') : t('status.partial outage')}
+			{counter >= keysLength ? t('status.all operational') : counter === 0 ? t('status.major outage') : t('status.partial outage')}
 		</AlertProto>
 	) : null;
 };

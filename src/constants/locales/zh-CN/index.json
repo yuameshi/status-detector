@@ -3,7 +3,7 @@
 		"all operational": "所有系统运行正常",
 		"partial outage": "部分站点无法访问",
 		"major outage": "出现重大故障",
-		"unknown": "部分站点状态未知"
+		"loading": "正在从Uptime Robot加载数据，数据可能不准确"
 	},
 	"monitor": {
 		"today": "今天",
@@ -12,7 +12,7 @@
 		"status": {
 			"operational": "正常",
 			"unknown": "未知",
-			"failed": "故障"
+			"failed": "失效"
 		}
 	}
 }

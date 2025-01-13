@@ -3,7 +3,7 @@
 		"all operational": "All System(s) Operational",
 		"partial outage": "Partial Outage",
 		"major outage": "Major Outage Occurred",
-		"unknown": "Some Site(s) Status Unknown"
+		"loading": "Loading data from Uptime Robot, data may be inaccurate"
 	},
 	"monitor": {
 		"today": "Today",
@@ -12,7 +12,7 @@
 		"status": {
 			"operational": "Operational",
 			"unknown": "Unknown",
-			"failed": "Failed"
+			"failed": "Failure"
 		}
 	}
 }

@@ -1,4 +1,5 @@
 {
+	"nothing": "Nothing here",
 	"status": {
 		"all operational": "All System(s) Operational",
 		"partial outage": "Partial Outage",

@@ -1,4 +1,5 @@
 {
+	"nothing": "无数据",
 	"status": {
 		"all operational": "所有系统运行正常",
 		"partial outage": "部分站点无法访问",

@@ -1,4 +1,4 @@
-export const apiKeys: string[] = [];
+export const apiKeys: string[] = process.env.API_KEYS?.split(',').map(key => key.trim()) || [];
 
 export const showLinks: boolean = true;
 

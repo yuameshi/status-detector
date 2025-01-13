@@ -11,7 +11,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 
-import Favicon from '@assets/favicon.ico';
+import Favicon from '~/public/favicon.png';
 import { EmotionCache } from '@components/utils/EmotionCache';
 import { ThemeContext } from '@components/utils/ThemeContext';
 import { ScrollBarCss } from '@components/utils/ScrollBarCss';
@@ -28,12 +28,12 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 		title: t('metadata.title'),
 		description: t('metadata.description'),
 		authors: [{ name: 'yuameshi' }],
-		// icons: [
-		// 	{
-		// 		url: Favicon.src,
-		// 		sizes: `${Favicon.height}x${Favicon.width}`,
-		// 	},
-		// ],
+		icons: [
+			{
+				url: Favicon.src,
+				sizes: `${Favicon.height}x${Favicon.width}`,
+			},
+		],
 	};
 }
 

@@ -19,7 +19,7 @@ export const Alert = () => {
 				mb: 1.5,
 			}}
 		>
-			{apiKeys.length === counter
+			{apiKeys.length >= counter
 				? t('status.all operational')
 				: apiKeys.length === 0
 					? t('status.major outage')

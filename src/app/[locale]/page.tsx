@@ -1,14 +1,14 @@
 import { Box } from '@mui/material';
 import { apiKeys, maxDays, showLinks } from '@constants/config';
 import { MonitorCard } from '@components/pages/index/MonitorCard';
-import { CounterContextProvider } from '@components/pages/index/CounterContext';
+import { OperationalCounterContextProvider } from '@components/pages/index/OperationalCounterContext';
 import { Alert } from '@components/pages/index/Alert/Alert';
 import { LoadingAlert } from '@components/pages/index/Alert/LoadingAlert';
 import { LoadedCounterContextProvider } from '@components/pages/index/LoadedCounterContext';
 
 const Home = () => (
 	<LoadedCounterContextProvider>
-		<CounterContextProvider>
+		<OperationalCounterContextProvider>
 			<Box
 				sx={{
 					display: 'flex',
@@ -41,7 +41,7 @@ const Home = () => (
 					))}
 				</Box>
 			</Box>
-		</CounterContextProvider>
+		</OperationalCounterContextProvider>
 	</LoadedCounterContextProvider>
 );
 

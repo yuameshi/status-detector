@@ -1,7 +1,7 @@
 'use client';
 
 import { Alert as AlertProto } from '@mui/material';
-import { CounterContext } from '@/contexts/counter';
+import { OperationalCounterContext } from '@/contexts/operational-counter';
 import { useTranslations } from 'next-intl';
 import { type FC, useContext } from 'react';
 
@@ -10,7 +10,7 @@ type AlertProps = {
 };
 
 export const Alert: FC<AlertProps> = ({ keysLength }) => {
-	const { counter } = useContext(CounterContext);
+	const { counter } = useContext(OperationalCounterContext);
 	const t = useTranslations('index');
 
 	return keysLength > 0 ? (

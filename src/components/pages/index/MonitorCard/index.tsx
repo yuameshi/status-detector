@@ -1,6 +1,6 @@
 'use client';
 
-import { CounterContext } from '@/contexts/counter';
+import { OperationalCounterContext } from '@/contexts/operational-counter';
 import { LoadedCounterContext } from '@/contexts/loaded-counter';
 import { MonitorCardWithDetail } from '@components/pages/index/MonitorCard/MonitorCardWithData';
 import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Placeholder';
@@ -15,7 +15,7 @@ export const MonitorCard: FC<{
 }> = ({ token, maxDays, showLinks }) => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<IUptimeRobotApiReturn>();
-	const { setCounter } = useContext(CounterContext);
+	const { setCounter } = useContext(OperationalCounterContext);
 	const { setLoaded } = useContext(LoadedCounterContext);
 
 	useEffect(() => {

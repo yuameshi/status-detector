@@ -8,8 +8,10 @@ import { useContext, useEffect, useState, type FC } from 'react';
 import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 
 export const MonitorCard: FC<{
+	showLinks: boolean;
 	token: string;
-}> = ({ token }) => {
+	maxDays: number;
+}> = ({ token, maxDays, showLinks }) => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<IUptimeRobotApiReturn>();
 	const { setCounter } = useContext(CounterContext);
@@ -17,7 +19,7 @@ export const MonitorCard: FC<{
 	useEffect(() => {
 		(async () => {
 			try {
-				const data = await getData(token);
+				const data = await getData(token, maxDays);
 				if (data.stat === 'ok') {
 					setData(data);
 					setLoading(false);
@@ -35,6 +37,8 @@ export const MonitorCard: FC<{
 			status={data.monitors[0].status}
 			availability={data.monitors[0].custom_uptime_ranges}
 			link={data.monitors[0].url}
+			showLinks={showLinks}
+			maxDays={maxDays}
 		/>
 	);
 };

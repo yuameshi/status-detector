@@ -5,7 +5,6 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { DetailedStatusCell } from '@components/pages/index/MonitorCard/DetailedStatusCell';
-import { maxDays, showLinks } from '@constants/config';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 enum Status {
@@ -19,9 +18,11 @@ type MonitorCardProps = {
 	status: Status;
 	availability: string;
 	link: string;
+	showLinks: boolean;
+	maxDays: number;
 };
 
-function getDates() {
+function getDates(maxDays = 60) {
 	const DAY = 86400;
 	const periods = [];
 	const start = Math.floor(new Date().valueOf() / 1000) + DAY;
@@ -31,17 +32,16 @@ function getDates() {
 	}
 	periods.push([start - DAY * maxDays, start].join('_'));
 	return {
-		logs_start_date: start - DAY * maxDays,
-		logs_end_date: start,
-		custom_uptime_ranges: periods.join('-'),
+		startDate: start - DAY * maxDays,
+		ranges: periods,
 	};
 }
 
-export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, link, availability }) => {
+export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, link, availability, showLinks, maxDays }) => {
 	const t = useTranslations('index');
-	const dates = getDates();
-	const day = dates.custom_uptime_ranges.split('-');
-	const startDate = new Date(dates.logs_start_date * 1000);
+	const dates = getDates(maxDays);
+	const day = dates.ranges;
+	const startDate = new Date(dates.startDate * 1000);
 
 	return (
 		<Card

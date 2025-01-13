@@ -1,7 +1,6 @@
-import { maxDays } from '@constants/config';
 import type { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 
-function getDates() {
+function getDates(maxDays = 60) {
 	const DAY = 86400;
 	const periods = [];
 	const start = new Date(new Date().toLocaleDateString()).valueOf() / 1000 + DAY;
@@ -17,7 +16,7 @@ function getDates() {
 	};
 }
 
-export async function getData(token: string): Promise<IUptimeRobotApiReturn> {
+export async function getData(token: string, maxDays: number = 60): Promise<IUptimeRobotApiReturn> {
 	return await (
 		await fetch('https://api.uptimerobot.com/v2/getMonitors', {
 			headers: { 'Content-Type': 'application/json' },
@@ -26,7 +25,7 @@ export async function getData(token: string): Promise<IUptimeRobotApiReturn> {
 				format: 'json',
 				logs: 1,
 				log_types: '1-2',
-				...getDates(),
+				...getDates(maxDays),
 			}),
 			method: 'POST',
 		})

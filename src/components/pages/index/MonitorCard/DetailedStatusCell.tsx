@@ -6,13 +6,13 @@ import { type FC, useState } from 'react';
 
 type DetailedStatusCellProps = {
 	availability?: number;
-	range: string;
+	range?: string;
 };
 
 export const DetailedStatusCell: FC<DetailedStatusCellProps> = ({ availability, range }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const statPeriod = range
-		.split('_')
+		?.split('_')
 		.map(date => {
 			const dateObj = new Date(Number(date) * 1000);
 			return dateObj.getFullYear() + '-' + (dateObj.getMonth() + 1) + '-' + dateObj.getDate();

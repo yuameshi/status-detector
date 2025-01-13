@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
-import { apiKeys } from '@constants/config';
+import { apiKeys, maxDays, showLinks } from '@constants/config';
 import { MonitorCard } from '@components/pages/index/MonitorCard';
 import { CounterContextProvider } from '@components/pages/index/CounterContext';
-import { Alert } from '@components/pages/index/Alert/index';
+import { Alert } from '@components/pages/index/Alert/Alert';
 
 const Home = () => (
 	<CounterContextProvider>
@@ -26,10 +26,12 @@ const Home = () => (
 					// height: '100vh',
 				}}
 			>
-				<Alert />
+				<Alert keysLength={apiKeys.length} />
 				{apiKeys.map((_, i) => (
 					<MonitorCard
 						key={i}
+						showLinks={showLinks}
+						maxDays={maxDays}
 						token={apiKeys[i]}
 					/>
 				))}

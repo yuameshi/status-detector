@@ -11,7 +11,6 @@ type AlertProps = {
 
 export const Alert: FC<AlertProps> = ({ keysLength }) => {
 	const { counter } = useContext(CounterContext);
-	console.log('counter', counter);
 	const t = useTranslations('index');
 
 	return keysLength > 0 ? (

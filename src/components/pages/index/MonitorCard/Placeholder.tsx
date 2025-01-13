@@ -66,6 +66,22 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 				<Box
 					sx={{
 						display: 'flex',
+						justifyContent: 'space-between',
+						mt: 0.25,
+					}}
+				>
+					<Skeleton
+						variant='text'
+						width={50}
+					/>
+					<Skeleton
+						variant='text'
+						width={75}
+					/>
+				</Box>
+				<Box
+					sx={{
+						display: 'flex',
 						justifyContent: 'center',
 						mt: 1,
 					}}

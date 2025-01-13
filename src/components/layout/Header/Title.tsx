@@ -10,7 +10,7 @@ export function Title() {
 		<Typography
 			variant='h6'
 			component='div'
-			sx={{ flexGrow: 1, m: 2 }}
+			sx={{ flexGrow: 1, ml: 1, mr: 2, my: 2 }}
 		>
 			{t('site name')}
 		</Typography>

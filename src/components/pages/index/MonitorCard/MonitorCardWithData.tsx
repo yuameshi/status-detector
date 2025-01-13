@@ -20,10 +20,11 @@ type MonitorCardProps = {
 	availability: string;
 	link: string;
 };
+
 function getDates() {
 	const DAY = 86400;
 	const periods = [];
-	const start = new Date(new Date().toLocaleDateString()).valueOf() / 1000 + DAY;
+	const start = Math.floor(new Date().valueOf() / 1000) + DAY;
 	for (let i = 0; i < maxDays; i++) {
 		// Bigger number is placed last
 		periods.push([start - DAY * (i + 1), start - DAY * i].join('_'));
@@ -40,7 +41,7 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 	const t = useTranslations('index');
 	const dates = getDates();
 	const day = dates.custom_uptime_ranges.split('-');
-	const startDate = new Date(dates.logs_start_date * 1000).toLocaleDateString();
+	const startDate = new Date(dates.logs_start_date * 1000);
 
 	return (
 		<Card
@@ -136,7 +137,9 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 						}}
 					>
 						<Typography variant='body2'>{t('monitor.today')}</Typography>
-						<Typography variant='body2'>{startDate}</Typography>
+						<Typography variant='body2'>
+							{startDate.getFullYear() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getDate()}
+						</Typography>
 					</Box>
 					<Box
 						sx={{

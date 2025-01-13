@@ -13,7 +13,10 @@ export const DetailedStatusCell: FC<DetailedStatusCellProps> = ({ availability, 
 	const [isHovered, setIsHovered] = useState(false);
 	const statPeriod = range
 		.split('_')
-		.map(date => new Date(Number(date) * 1000).toLocaleDateString())
+		.map(date => {
+			const dateObj = new Date(Number(date) * 1000);
+			return dateObj.getFullYear() + '-' + (dateObj.getMonth() + 1) + '-' + dateObj.getDate();
+		})
 		.join(' - ');
 	const t = useTranslations('index');
 

@@ -18,7 +18,7 @@ const Home = () => (
 			alignItems: 'center',
 		}}
 	>
-		{apiKeys.length >= 0 ? (
+		{apiKeys.length > 0 ? (
 			<LoadedCounterContextProvider>
 				<OperationalCounterContextProvider>
 					<LoadFailedCounterContextProvider>

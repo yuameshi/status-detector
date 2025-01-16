@@ -7,6 +7,7 @@ import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Plac
 import { getData } from '@utils/getData';
 import { useContext, useEffect, useState, type FC } from 'react';
 import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
+import { MonitorCardFailed } from '@components/pages/index/MonitorCard/Failed';
 
 export const MonitorCard: FC<{
 	showLinks: boolean;
@@ -30,21 +31,23 @@ export const MonitorCard: FC<{
 				}
 			} catch (error) {
 				setLoaded((prev: number) => prev + 1);
+				setLoading(false);
 				console.error(error);
 			}
 		})();
 	}, [token]);
 
-	return loading || !data ? (
-		<MonitorCardPlaceholder maxDays={maxDays} />
-	) : (
-		<MonitorCardWithDetail
-			title={data.monitors[0].friendly_name}
-			status={data.monitors[0].status}
-			availability={data.monitors[0].custom_uptime_ranges}
-			link={data.monitors[0].url}
-			showLinks={showLinks}
-			maxDays={maxDays}
-		/>
-	);
+	if (loading === true && data === undefined) return <MonitorCardPlaceholder maxDays={maxDays} />;
+	else if (loading === false && data !== undefined)
+		return (
+			<MonitorCardWithDetail
+				title={data.monitors[0].friendly_name}
+				status={data.monitors[0].status}
+				availability={data.monitors[0].custom_uptime_ranges}
+				link={data.monitors[0].url}
+				showLinks={showLinks}
+				maxDays={maxDays}
+			/>
+		);
+	else return <MonitorCardFailed />;
 };

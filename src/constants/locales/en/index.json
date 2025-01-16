@@ -4,7 +4,8 @@
 		"all operational": "All System(s) Operational",
 		"partial outage": "Partial Outage",
 		"major outage": "Major Outage Occurred",
-		"loading": "Loading data from Uptime Robot, data may be inaccurate"
+		"loading": "Loading data from Uptime Robot, data may be inaccurate",
+		"load failed": "Failed to load data from Uptime Robot"
 	},
 	"monitor": {
 		"today": "Today",
@@ -14,6 +15,7 @@
 			"operational": "Operational",
 			"unknown": "Unknown",
 			"failed": "Failure"
-		}
+		},
+		"load failed": "Failed to load data from Uptime Robot"
 	}
 }

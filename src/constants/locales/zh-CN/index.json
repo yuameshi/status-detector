@@ -4,7 +4,8 @@
 		"all operational": "所有系统运行正常",
 		"partial outage": "部分站点无法访问",
 		"major outage": "出现重大故障",
-		"loading": "正在从Uptime Robot加载数据，数据可能不准确"
+		"loading": "正在从Uptime Robot加载数据，数据可能不准确",
+		"load failed": "无法从Uptime Robot加载数据"
 	},
 	"monitor": {
 		"today": "今天",
@@ -14,6 +15,7 @@
 			"operational": "正常",
 			"unknown": "未知",
 			"failed": "失效"
-		}
+		},
+		"load failed": "无法从Uptime Robot加载数据"
 	}
 }

@@ -8,6 +8,7 @@ import { getData } from '@utils/getData';
 import { useContext, useEffect, useState, type FC } from 'react';
 import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 import { MonitorCardFailed } from '@components/pages/index/MonitorCard/Failed';
+import { LoadFailedCounterContext } from '@/contexts/load-failed-counter';
 
 export const MonitorCard: FC<{
 	showLinks: boolean;
@@ -18,6 +19,7 @@ export const MonitorCard: FC<{
 	const [data, setData] = useState<IUptimeRobotApiReturn>();
 	const { setCounter } = useContext(OperationalCounterContext);
 	const { setLoaded } = useContext(LoadedCounterContext);
+	const { setFailed } = useContext(LoadFailedCounterContext);
 
 	useEffect(() => {
 		(async () => {
@@ -31,6 +33,7 @@ export const MonitorCard: FC<{
 				}
 			} catch (error) {
 				setLoading(false);
+				setFailed((prev: number) => prev + 1);
 				console.error(error);
 			}
 		})();

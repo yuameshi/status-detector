@@ -17,7 +17,7 @@
         - API_KEYS: Comma separated list of `Monitor-specific API keys` for the statuspage. You can get it from [dashboard of uptime robot](https://dashboard.uptimerobot.com/integrations).
 
 ```
-EXTERNAL_LINKS=name|url_name|url
+EXTERNAL_LINKS=name|url
 SHOW_LINKS=true
 MAX_DAYS=60
 API_KEYS=key1,key2,key3

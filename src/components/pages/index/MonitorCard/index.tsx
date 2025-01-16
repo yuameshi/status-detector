@@ -30,7 +30,6 @@ export const MonitorCard: FC<{
 					if (data.monitors[0].status === 2) setCounter((prev: number) => prev + 1);
 				}
 			} catch (error) {
-				setLoaded((prev: number) => prev + 1);
 				setLoading(false);
 				console.error(error);
 			}

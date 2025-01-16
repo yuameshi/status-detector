@@ -1,7 +1,21 @@
 {
 	"name": "status-detector",
-	"version": "0.1.0",
+	"description": "Website status detector frontend ( backend by status robot )",
+	"version": "1.0.0",
 	"private": true,
+	"license": "MIT",
+	"author": "yuameshi <yuameshi@outlook.com> (https://www.yuameshi.top/)",
+	"bugs": "https://github.com/yuameshi/status-detector/issues",
+	"homepage": "https://github.com/yuameshi/status-detector#readme",
+	"repository": "github:yuameshi/status-detector",
+	"engines": {
+		"node": ">=18"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not op_mini all"
+	],
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
@@ -16,8 +30,8 @@
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.0",
 		"@fontsource/roboto": "^5.1.1",
-		"@mui/icons-material": "^6.3.1",
-		"@mui/material": "^6.3.1",
+		"@mui/icons-material": "^6.4.0",
+		"@mui/material": "^6.4.0",
 		"color": "^4.2.3",
 		"next": "15.1.4",
 		"next-intl": "^3.26.3",
@@ -27,7 +41,7 @@
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
 		"@types/color": "^4.2.0",
-		"@types/node": "^20",
+		"@types/node": "^22",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"eslint": "^9",

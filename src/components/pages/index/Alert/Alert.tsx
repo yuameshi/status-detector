@@ -15,16 +15,18 @@ export const Alert: FC<AlertProps> = ({ keysLength }) => {
 	const { loaded } = useContext(LoadedCounterContext);
 	const t = useTranslations('index');
 
-	return keysLength > 0 && loaded >= keysLength ? (
-		<AlertProto
-			variant='filled'
-			severity={counter >= loaded ? 'success' : counter === 0 ? 'error' : 'warning'}
-			sx={{
-				width: '100%',
-				mb: 1.5,
-			}}
-		>
-			{counter >= loaded ? t('status.all operational') : counter === 0 ? t('status.major outage') : t('status.partial outage')}
-		</AlertProto>
-	) : null;
+	return (
+		loaded >= keysLength && (
+			<AlertProto
+				variant='filled'
+				severity={counter >= loaded ? 'success' : counter === 0 ? 'error' : 'warning'}
+				sx={{
+					width: '100%',
+					mb: 1.5,
+				}}
+			>
+				{counter >= loaded ? t('status.all operational') : counter === 0 ? t('status.major outage') : t('status.partial outage')}
+			</AlertProto>
+		)
+	);
 };

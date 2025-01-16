@@ -10,18 +10,18 @@ import { LoadFailedCounterContextProvider } from '@components/pages/index/LoadFa
 import { LoadFailedAlert } from '@components/pages/index/Alert/LoadFailedAlert';
 
 const Home = () => (
-	<LoadedCounterContextProvider>
-		<OperationalCounterContextProvider>
-			<LoadFailedCounterContextProvider>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
-						alignItems: 'center',
-					}}
-				>
-					{apiKeys.length !== 0 ? (
+	<Box
+		sx={{
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			alignItems: 'center',
+		}}
+	>
+		{apiKeys.length >= 0 ? (
+			<LoadedCounterContextProvider>
+				<OperationalCounterContextProvider>
+					<LoadFailedCounterContextProvider>
 						<Box
 							sx={{
 								display: 'flex',
@@ -46,26 +46,26 @@ const Home = () => (
 								/>
 							))}
 						</Box>
-					) : (
-						<Box
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								px: 3,
-								width: '100%',
-								maxWidth: 1000,
-								alignItems: 'center',
-								justifyContent: 'center',
-								height: '70vh',
-							}}
-						>
-							<NoData />
-						</Box>
-					)}
-				</Box>
-			</LoadFailedCounterContextProvider>
-		</OperationalCounterContextProvider>
-	</LoadedCounterContextProvider>
+					</LoadFailedCounterContextProvider>
+				</OperationalCounterContextProvider>
+			</LoadedCounterContextProvider>
+		) : (
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					px: 3,
+					width: '100%',
+					maxWidth: 1000,
+					alignItems: 'center',
+					justifyContent: 'center',
+					height: '70vh',
+				}}
+			>
+				<NoData />
+			</Box>
+		)}
+	</Box>
 );
 
 export default Home;

@@ -1,18 +1,18 @@
 export const runtime = 'edge';
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { CssBaseline } from '@mui/material';
 import { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 import Favicon from '~/public/favicon.png';
-import { EmotionCache } from '@components/utils/EmotionCache';
 import { ThemeContext } from '@components/utils/ThemeContext';
 import { ScrollBarCss } from '@components/utils/ScrollBarCss';
 import { Layout } from '@components/layout';
@@ -65,17 +65,17 @@ export default async function RootLayout(
 
 	return (
 		<html>
-			<ThemeContext>
-				<EmotionCache>
+			<body>
+				<ThemeContext>
 					<ScrollBarCss />
 					<CssBaseline />
-					<body>
+					<AppRouterCacheProvider>
 						<NextIntlClientProvider messages={messages}>
 							<Layout>{children}</Layout>
 						</NextIntlClientProvider>
-					</body>
-				</EmotionCache>
-			</ThemeContext>
+					</AppRouterCacheProvider>
+				</ThemeContext>
+			</body>
 		</html>
 	);
 }

@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid2, Skeleton, Typography } from '@mui/material';
+import { Box, Card, CardContent, Grid, Skeleton, Typography } from '@mui/material';
 import type { FC } from 'react';
 import WarningIcon from '@mui/icons-material/Warning';
 import { useTranslations } from 'next-intl';

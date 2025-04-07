@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid2, Skeleton } from '@mui/material';
+import { Box, Card, CardContent, Grid, Skeleton } from '@mui/material';
 import type { FC } from 'react';
 
 export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => (
@@ -11,20 +11,20 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 	>
 		<CardContent>
 			<Box>
-				<Grid2
+				<Grid
 					container
 					sx={{
 						mb: 1,
 					}}
 				>
-					<Grid2>
+					<Grid>
 						<Skeleton
 							variant='rounded'
 							width={150}
 						/>
-					</Grid2>
-					<Grid2 size='grow' />
-					<Grid2
+					</Grid>
+					<Grid size='grow' />
+					<Grid
 						sx={{
 							display: 'inline-flex',
 							alignItems: 'center',
@@ -40,10 +40,10 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 							variant='rounded'
 							width={35}
 						/>
-					</Grid2>
-				</Grid2>
+					</Grid>
+				</Grid>
 				<Box sx={{ maxWidth: '100%', overflow: 'hidden' }}>
-					<Grid2
+					<Grid
 						container
 						columns={60}
 						columnSpacing={0.4}
@@ -51,7 +51,7 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 						minWidth={700}
 					>
 						{new Array(maxDays).fill('').map((_, i) => (
-							<Grid2
+							<Grid
 								key={i}
 								size='grow'
 								sx={{
@@ -62,9 +62,9 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 									variant='rounded'
 									sx={{ height: '100%', width: '100%' }}
 								/>
-							</Grid2>
+							</Grid>
 						))}
-					</Grid2>
+					</Grid>
 				</Box>
 				<Box
 					sx={{

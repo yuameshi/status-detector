@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, Card, CardContent, Grid2, IconButton, Typography } from '@mui/material';
+import { Box, Card, CardContent, Grid, IconButton, Typography } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
@@ -53,13 +53,13 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 		>
 			<CardContent sx={{ mb: -1.5 }}>
 				<Box>
-					<Grid2
+					<Grid
 						container
 						sx={{
 							mb: 1,
 						}}
 					>
-						<Grid2
+						<Grid
 							display='inline-flex'
 							alignItems='center'
 						>
@@ -75,9 +75,9 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 									<OpenInNewIcon fontSize='small' />
 								</IconButton>
 							)}
-						</Grid2>
-						<Grid2 size='grow' />
-						<Grid2
+						</Grid>
+						<Grid size='grow' />
+						<Grid
 							sx={{
 								display: 'inline-flex',
 								alignItems: 'center',
@@ -103,10 +103,10 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 										? t('monitor.status.failed')
 										: t('monitor.status.unknown')}
 							</Typography>
-						</Grid2>
-					</Grid2>
+						</Grid>
+					</Grid>
 					<Box sx={{ maxWidth: '100%', overflowX: 'auto' }}>
-						<Grid2
+						<Grid
 							container
 							columns={60}
 							columnSpacing={0.4}
@@ -117,7 +117,7 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 								.split('-')
 								.slice(0, -1)
 								.map((range, i) => (
-									<Grid2
+									<Grid
 										key={i}
 										size='grow'
 										sx={{
@@ -128,9 +128,9 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 											availability={Number(range)}
 											range={day[i]}
 										/>
-									</Grid2>
+									</Grid>
 								))}
-						</Grid2>
+						</Grid>
 					</Box>
 					<Box
 						sx={{

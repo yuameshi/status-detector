@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Grid2, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Grid, Button, Box } from '@mui/material';
 import { DarkmodeToggle } from '@components/layout/Header/DarkmodeToggle';
 import { LanguageMenu } from '@components/layout/Header/LanguageMenu';
 import { externalLinks } from '@constants/config';
@@ -11,7 +11,7 @@ export const AppHeader = () => {
 		<AppBar position='sticky'>
 			<Toolbar>
 				<StorageIcon sx={{ m: 2 }} />
-				<Grid2
+				<Grid
 					container
 					sx={{
 						display: 'flex',
@@ -19,7 +19,7 @@ export const AppHeader = () => {
 						justifyContent: 'space-between',
 					}}
 				>
-					<Grid2
+					<Grid
 						size='auto'
 						display='flex'
 						alignItems='center'
@@ -43,8 +43,8 @@ export const AppHeader = () => {
 								</Button>
 							))}
 						</Box>
-					</Grid2>
-					<Grid2
+					</Grid>
+					<Grid
 						size='auto'
 						display='flex'
 						alignItems='center'
@@ -52,8 +52,8 @@ export const AppHeader = () => {
 					>
 						<LanguageMenu />
 						<DarkmodeToggle />
-					</Grid2>
-				</Grid2>
+					</Grid>
+				</Grid>
 			</Toolbar>
 		</AppBar>
 	);

@@ -1,13 +1,16 @@
 import { Box } from '@mui/material';
+import dynamic from 'next/dynamic';
 import { apiKeys, maxDays, showLinks } from '@constants/config';
 import { MonitorCard } from '@components/pages/index/MonitorCard';
 import { OperationalCounterContextProvider } from '@components/pages/index/OperationalCounterContext';
-import { Alert } from '@components/pages/index/Alert/Alert';
+const Alert = dynamic(() => import('@components/pages/index/Alert/Alert').then(el => el.Alert));
+// import { Alert } from '@components/pages/index/Alert/Alert';
 import { LoadingAlert } from '@components/pages/index/Alert/LoadingAlert';
 import { LoadedCounterContextProvider } from '@components/pages/index/LoadedCounterContext';
 import { NoData } from '@components/pages/index/NoData';
 import { LoadFailedCounterContextProvider } from '@components/pages/index/LoadFailedCounterContext';
-import { LoadFailedAlert } from '@components/pages/index/Alert/LoadFailedAlert';
+const LoadFailedAlert = dynamic(() => import('@components/pages/index/Alert/LoadFailedAlert').then(el => el.LoadFailedAlert));
+// import { LoadFailedAlert } from '@components/pages/index/Alert/LoadFailedAlert';
 
 const Home = () => (
 	<Box

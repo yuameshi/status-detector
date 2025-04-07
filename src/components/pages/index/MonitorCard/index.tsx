@@ -1,13 +1,16 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { OperationalCounterContext } from '@/contexts/operational-counter';
 import { LoadedCounterContext } from '@/contexts/loaded-counter';
-import { MonitorCardWithDetail } from '@components/pages/index/MonitorCard/MonitorCardWithData';
+const MonitorCardWithDetail = dynamic(() => import('./MonitorCardWithData').then(el => el.MonitorCardWithDetail));
+// import { MonitorCardWithDetail } from '@components/pages/index/MonitorCard/MonitorCardWithData';
 import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Placeholder';
 import { getData } from '@utils/getData';
 import { useContext, useEffect, useState, type FC } from 'react';
 import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
-import { MonitorCardFailed } from '@components/pages/index/MonitorCard/Failed';
+const MonitorCardFailed = dynamic(() => import('./Failed').then(el => el.MonitorCardFailed));
+// import { MonitorCardFailed } from '@components/pages/index/MonitorCard/Failed';
 import { LoadFailedCounterContext } from '@/contexts/load-failed-counter';
 
 export const MonitorCard: FC<{

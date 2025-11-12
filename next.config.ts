@@ -9,9 +9,6 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	trailingSlash: true,
 	poweredByHeader: false,
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
 	typescript: {
 		ignoreBuildErrors: true,
 	},

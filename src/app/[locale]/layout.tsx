@@ -1,6 +1,6 @@
 export const runtime = 'edge';
 
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
 import { CssBaseline } from '@mui/material';
 import { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';

@@ -30,24 +30,24 @@
 		"@emotion/cache": "^11.14.0",
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.1",
-		"@fontsource/roboto": "^5.2.8",
-		"@mui/icons-material": "^7.3.5",
-		"@mui/material": "^7.3.5",
-		"@mui/material-nextjs": "^7.3.5",
+		"@fontsource/roboto": "^5.2.9",
+		"@mui/icons-material": "^7.3.6",
+		"@mui/material": "^7.3.6",
+		"@mui/material-nextjs": "^7.3.6",
 		"color": "^5.0.3",
-		"next": "16.0.3",
-		"next-intl": "^4.5.3",
-		"react": "19.2.0",
-		"react-dom": "19.2.0"
+		"next": "16.0.8",
+		"next-intl": "^4.5.8",
+		"react": "19.2.1",
+		"react-dom": "19.2.1"
 	},
 	"devDependencies": {
 		"@types/color": "^4.2.0",
-		"@types/node": "^24",
-		"@types/react": "19.2.6",
+		"@types/node": "^25",
+		"@types/react": "19.2.7",
 		"@types/react-dom": "19.2.3",
 		"eslint": "^9",
-		"eslint-config-next": "16.0.3",
-		"prettier": "^3.6.2",
+		"eslint-config-next": "16.0.8",
+		"prettier": "^3.7.4",
 		"typescript": "^5"
 	}
 }

@@ -23,8 +23,8 @@ export const DetailedStatusCell: FC<DetailedStatusCellProps> = ({ availability, 
 	return (
 		<Tooltip
 			title={t('monitor.detail stat', {
-				date: statPeriod,
-				rate: availability,
+				date: statPeriod !== undefined ? statPeriod : 'N/A',
+				rate: availability !== undefined ? availability : 'N/A',
 			})}
 			placement='top'
 		>

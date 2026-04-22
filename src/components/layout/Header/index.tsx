@@ -21,9 +21,9 @@ export const AppHeader = () => {
 				>
 					<Grid
 						size='auto'
-						display='flex'
-						alignItems='center'
 						sx={{
+							display: 'flex',
+							alignItems: 'center',
 							maxWidth: '100%',
 							flexWrap: 'wrap',
 						}}
@@ -46,9 +46,11 @@ export const AppHeader = () => {
 					</Grid>
 					<Grid
 						size='auto'
-						display='flex'
-						alignItems='center'
-						py={1}
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							py: 1,
+						}}
 					>
 						<LanguageMenu />
 						<DarkmodeToggle />

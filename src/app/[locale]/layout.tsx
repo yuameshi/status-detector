@@ -7,15 +7,21 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import { Roboto } from 'next/font/google';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '@constants/theme';
 
 import Favicon from '~/public/favicon.png';
 import { ThemeContext } from '@components/utils/ThemeContext';
 import { ScrollBarCss } from '@components/utils/ScrollBarCss';
 import { Layout } from '@components/layout';
+
+const roboto = Roboto({
+	weight: ['300', '400', '500', '700'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-roboto',
+});
 
 export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
 	const params = await props.params;
@@ -64,17 +70,20 @@ export default async function RootLayout(
 	const messages = await getMessages();
 
 	return (
-		<html>
+		<html
+			className={roboto.variable}
+			lang={locale}
+		>
 			<body>
-				<ThemeContext>
-					<ScrollBarCss />
-					<CssBaseline />
-					<AppRouterCacheProvider>
+				<AppRouterCacheProvider options={{ key: 'css' }}>
+					<ThemeContext>
+						<ScrollBarCss />
+						<CssBaseline />
 						<NextIntlClientProvider messages={messages}>
 							<Layout>{children}</Layout>
 						</NextIntlClientProvider>
-					</AppRouterCacheProvider>
-				</ThemeContext>
+					</ThemeContext>
+				</AppRouterCacheProvider>
 			</body>
 		</html>
 	);

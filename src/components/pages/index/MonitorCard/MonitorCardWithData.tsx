@@ -60,8 +60,10 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 						}}
 					>
 						<Grid
-							display='inline-flex'
-							alignItems='center'
+							sx={{
+								display: 'inline-flex',
+								alignItems: 'center',
+							}}
 						>
 							<Typography variant='body1'>{title}</Typography>
 							{showLinks && (
@@ -110,8 +112,10 @@ export const MonitorCardWithDetail: FC<MonitorCardProps> = ({ title, status, lin
 							container
 							columns={60}
 							columnSpacing={0.4}
-							height={30}
-							minWidth={700}
+							sx={{
+								height: 30,
+								minWidth: 700,
+							}}
 						>
 							{availability
 								.split('-')

@@ -47,8 +47,10 @@ export const MonitorCardPlaceholder: FC<{ maxDays: number }> = ({ maxDays }) => 
 						container
 						columns={60}
 						columnSpacing={0.4}
-						height={30}
-						minWidth={700}
+						sx={{
+							height: 30,
+							minWidth: 700,
+						}}
 					>
 						{new Array(maxDays).fill('').map((_, i) => (
 							<Grid

@@ -20,6 +20,7 @@ export const RefreshProvider: FC<PropsWithChildren<{ refreshInterval: number }>>
 		const interval = setInterval(() => {
 			secondsLeftRef.current -= 1;
 			if (secondsLeftRef.current <= 0) {
+				clearCache();
 				setRefreshKey(prev => prev + 1);
 				secondsLeftRef.current = refreshInterval;
 			}
@@ -29,9 +30,6 @@ export const RefreshProvider: FC<PropsWithChildren<{ refreshInterval: number }>>
 		return () => clearInterval(interval);
 	}, [refreshInterval]);
 
-	return (
-		<RefreshContext.Provider value={{ refreshKey, secondsLeft, refreshInterval, triggerRefresh }}>
-			{children}
-		</RefreshContext.Provider>
-	);
+	return <RefreshContext.Provider value={{ refreshKey, secondsLeft, triggerRefresh }}>{children}</RefreshContext.Provider>;
 };
+

@@ -19,9 +19,8 @@ export const MonitorCard: FC<{
 	token: string;
 	maxDays: number;
 }> = ({ token, maxDays, showLinks }) => {
-	const { refreshKey, refreshInterval } = useContext(RefreshContext);
-	const cacheTtl = refreshInterval * 1000;
-	const cachedData = getCachedData(token, maxDays, cacheTtl);
+	const { refreshKey } = useContext(RefreshContext);
+	const cachedData = getCachedData(token, maxDays);
 	const [loading, setLoading] = useState(!cachedData);
 	const [data, setData] = useState<IUptimeRobotApiReturn | undefined>(cachedData);
 	const { setCounter } = useContext(OperationalCounterContext);
@@ -38,7 +37,7 @@ export const MonitorCard: FC<{
 
 		(async () => {
 			try {
-				const data = await getData(token, maxDays, cacheTtl);
+				const data = await getData(token, maxDays);
 				if (data.stat === 'ok') {
 					setData(data);
 					setLoading(false);

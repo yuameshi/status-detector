@@ -15,12 +15,14 @@
         - SHOW_LINKS: Boolean(`true`/`false`) value to show or hide the external links
         - MAX_DAYS: Maximum number of days to show the status of the services
         - API_KEYS: Comma separated list of `Monitor-specific API keys` for the statuspage. You can get it from [dashboard of uptime robot](https://dashboard.uptimerobot.com/integrations).
+        - REFRESH_INTERVAL: Auto-refresh interval in seconds. The page will automatically refresh status data at this interval. Default is `300` (5 minutes).
 
 ```
 EXTERNAL_LINKS=name|url
 SHOW_LINKS=true
 MAX_DAYS=60
 API_KEYS=key1,key2,key3
+REFRESH_INTERVAL=300
 ```
 
 - Build App

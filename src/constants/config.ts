@@ -16,9 +16,12 @@ export const externalLinks: ExternalLink[] =
 			url: link.split('|')[1],
 		})) || [];
 
+export const refreshInterval: number = Number(process.env.REFRESH_INTERVAL) || 300;
+
 export const config = {
 	apiKeys,
 	showLinks,
 	maxDays,
 	externalLinks,
+	refreshInterval,
 };

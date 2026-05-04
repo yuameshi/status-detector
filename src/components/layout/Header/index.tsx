@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Grid, Button, Box } from '@mui/material';
 import { DarkmodeToggle } from '@components/layout/Header/DarkmodeToggle';
 import { LanguageMenu } from '@components/layout/Header/LanguageMenu';
+import { RefreshTimer } from '@components/layout/Header/RefreshTimer';
 import { externalLinks } from '@constants/config';
 import { Title } from '@components/layout/Header/Title';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -52,6 +53,7 @@ export const AppHeader = () => {
 							py: 1,
 						}}
 					>
+						<RefreshTimer />
 						<LanguageMenu />
 						<DarkmodeToggle />
 					</Grid>

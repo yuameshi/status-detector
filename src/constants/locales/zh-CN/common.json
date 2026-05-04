@@ -6,5 +6,9 @@
 	},
 	"footer": {
 		"powered by": "驱动自"
+	},
+	"refresh": {
+		"next refresh": "距下次刷新",
+		"refresh now": "立即刷新"
 	}
 }

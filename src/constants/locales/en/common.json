@@ -6,5 +6,9 @@
 	},
 	"footer": {
 		"powered by": "Powered by"
+	},
+	"refresh": {
+		"next refresh": "Next refresh",
+		"refresh now": "Refresh now"
 	}
 }

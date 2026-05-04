@@ -1,5 +1,21 @@
 import type { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const cache = new Map<string, { data: IUptimeRobotApiReturn; timestamp: number }>();
+
+function getCacheKey(token: string, maxDays: number) {
+	return `${token}_${maxDays}`;
+}
+
+export function getCachedData(token: string, maxDays: number): IUptimeRobotApiReturn | undefined {
+	const key = getCacheKey(token, maxDays);
+	const cached = cache.get(key);
+	if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+		return cached.data;
+	}
+	return undefined;
+}
+
 function getDates(maxDays = 60) {
 	const DAY = 86400;
 	const periods = [];
@@ -17,7 +33,10 @@ function getDates(maxDays = 60) {
 }
 
 export async function getData(token: string, maxDays: number = 60): Promise<IUptimeRobotApiReturn> {
-	return await (
+	const cached = getCachedData(token, maxDays);
+	if (cached) return cached;
+
+	const data: IUptimeRobotApiReturn = await (
 		await fetch('https://api.uptimerobot.com/v2/getMonitors', {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -30,4 +49,7 @@ export async function getData(token: string, maxDays: number = 60): Promise<IUpt
 			method: 'POST',
 		})
 	).json();
+
+	cache.set(getCacheKey(token, maxDays), { data, timestamp: Date.now() });
+	return data;
 }

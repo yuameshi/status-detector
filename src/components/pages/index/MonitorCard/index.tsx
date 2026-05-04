@@ -6,7 +6,7 @@ import { LoadedCounterContext } from '@/contexts/loaded-counter';
 const MonitorCardWithDetail = dynamic(() => import('./MonitorCardWithData').then(el => el.MonitorCardWithDetail));
 // import { MonitorCardWithDetail } from '@components/pages/index/MonitorCard/MonitorCardWithData';
 import { MonitorCardPlaceholder } from '@components/pages/index/MonitorCard/Placeholder';
-import { getData } from '@utils/getData';
+import { getCachedData, getData } from '@utils/getData';
 import { useContext, useEffect, useState, type FC } from 'react';
 import { IUptimeRobotApiReturn } from '~/types/IUptimeRobotApiReturn';
 const MonitorCardFailed = dynamic(() => import('./Failed').then(el => el.MonitorCardFailed));
@@ -18,8 +18,9 @@ export const MonitorCard: FC<{
 	token: string;
 	maxDays: number;
 }> = ({ token, maxDays, showLinks }) => {
-	const [loading, setLoading] = useState(true);
-	const [data, setData] = useState<IUptimeRobotApiReturn>();
+	const cachedData = getCachedData(token, maxDays);
+	const [loading, setLoading] = useState(!cachedData);
+	const [data, setData] = useState<IUptimeRobotApiReturn | undefined>(cachedData);
 	const { setCounter } = useContext(OperationalCounterContext);
 	const { setLoaded } = useContext(LoadedCounterContext);
 	const { setFailed } = useContext(LoadFailedCounterContext);

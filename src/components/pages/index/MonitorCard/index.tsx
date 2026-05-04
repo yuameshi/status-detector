@@ -27,11 +27,20 @@ export const MonitorCard: FC<{
 	const { setLoaded } = useContext(LoadedCounterContext);
 	const { setFailed } = useContext(LoadFailedCounterContext);
 	const isInitialMount = useRef(true);
+	const prevContribution = useRef<'loaded' | 'failed' | null>(null);
 
 	useEffect(() => {
 		if (!isInitialMount.current) {
 			setLoading(true);
 			setData(undefined);
+			// Undo previous contribution to counters so Alert returns to Loading state
+			if (prevContribution.current === 'loaded') {
+				setLoaded((prev: number) => prev - 1);
+				if (data?.monitors[0].status === 2) setCounter((prev: number) => prev - 1);
+			} else if (prevContribution.current === 'failed') {
+				setFailed((prev: number) => prev - 1);
+			}
+			prevContribution.current = null;
 		}
 		isInitialMount.current = false;
 
@@ -42,11 +51,13 @@ export const MonitorCard: FC<{
 					setData(data);
 					setLoading(false);
 					setLoaded((prev: number) => prev + 1);
+					prevContribution.current = 'loaded';
 					if (data.monitors[0].status === 2) setCounter((prev: number) => prev + 1);
 				}
 			} catch (error) {
 				setLoading(false);
 				setFailed((prev: number) => prev + 1);
+				prevContribution.current = 'failed';
 				console.error(error);
 			}
 		})();
